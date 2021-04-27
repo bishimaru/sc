@@ -40,7 +40,7 @@ class TotalPayView(ListView):
     template_name = 'scrape_ps/total_pay.html'
 
     def queryset(self):
-        return TotalPay.objects.all()
+        return TotalPay.objects.all().order_by('-date')
 
 
 # class DateListView(ListView):
