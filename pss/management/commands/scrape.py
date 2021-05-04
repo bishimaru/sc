@@ -15,10 +15,9 @@ ssl._create_default_https_context = ssl._create_unverified_context
 class Command(BaseCommand):
     def handle(self, *args, **options):
         self.stdout.write('Hello World!')
-    scrape_day = input('何日前のデータを取得しますか？：')
 
         # まいジャグラー 
-    url = 'https://p-ken.jp/p-charakawa/bonus/lot?ps_div=2&cost=21.28&model_nm=%CF%B2%BC%DE%AC%B8%DE%D7%B0III&day=' + str(scrape_day) + '&mode='
+    url = 'https://p-ken.jp/p-charakawa/bonus/lot?ps_div=2&cost=21.28&model_nm=%CF%B2%BC%DE%AC%B8%DE%D7%B0III&day=1&mode='
     response = request.urlopen(url)
     soup = BeautifulSoup(response, 'html.parser')
     find = soup.findAll('table')
