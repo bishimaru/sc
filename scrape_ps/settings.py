@@ -26,8 +26,8 @@ SECRET_KEY = 'y)yih6$*3bqci%_kj-g$o^iyn3g!^1koeip1p^u8qt$a6w&^cu'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'pachisuro-scrape.com',
-    '127.0.0.1'
+    '*',
+
 ]
 
 
