@@ -85,7 +85,7 @@ class Command(BaseCommand):
     
     
     new_list = []
-    for i in list[9:43]:
+    for i in list[9:58]:
         num = i.replace('\r\n', '')
         num = num.replace("  ", "")
         new_list.append(num)
@@ -100,7 +100,7 @@ class Command(BaseCommand):
         if n >= length:
             break
     
-
+    
     for i in mm_list:
         num = i[0]
         bb = i[1]
@@ -172,59 +172,4 @@ class Command(BaseCommand):
     t = TotalPay(total_pay=total, date=yesterday)
     t.save()
 
-    # SｱｲﾑｼﾞｬｸﾞﾗｰEX
- 
-
-    url = 'https://p-ken.jp/p-charakawa/bonus/lot?ps_div=2&cost=21.28&model_nm=S%B1%B2%D1%BC%DE%AC%B8%DE%D7%B0EX&day=' + str(scrape_day) + '&mode='
-    response = request.urlopen(url)
-    soup = BeautifulSoup(response, 'html.parser')
-    find = soup.findAll('table')
-    find = soup.findAll(id='dataTable')
-    find = soup.findAll('td')
-
-    list = []
-    for row in find:
-        row = row.text
-        list.append(row)
-
     
-    
-    new_list = []
-    
-    for i in list[9:58]:
-        num = i.replace('\r\n', '')
-        num = num.replace("  ", "")
-        new_list.append(num)
-    mylist = [item for item in new_list if item != '']
-
-    length = len(mylist)
-    n=0
-    s=4
-    mm_list = []
-    for i in mylist:
-        mm_list.append(mylist[n:n+s:1])
-        n += s
-        if n >= length:
-            break
-
-    
-    
-    for i in mm_list:
-        num = i[0]
-        bb = i[1]
-        rg = i[2]
-        cnt = i[3]
-        num = int(num)
-        bb = int(bb)
-        rg = int(rg)
-        cnt = int(cnt)
-        pay = (312*bb) + (104*rg) - (cnt/34)*50
-        pay = int(pay)
-        total += pay
-        
-        d = Data(store_name='コンサートホール荒川', name='SｱｲﾑｼﾞｬｸﾞﾗｰEX', number=num,bigbonus=bb, date=yesterday, regularbonus=rg, count=cnt,payout=pay)
-        d.save()
-
-    t = TotalPay(total_pay=total, date=yesterday)
-    t.save()
-

@@ -11,5 +11,5 @@ urlpatterns = [
     # path('ss/', views.SelectDaysView.as_view(), name='ss'),
     path('total_pay/', views.TotalPayView.as_view(), name='total_pay'),
     # path('line/',views.show_line_graph, name='line'),
-    
+    path('', views.TopPage, name='top')
 ]

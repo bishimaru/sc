@@ -41,8 +41,9 @@ class TotalPayView(ListView):
 
     def queryset(self):
         return TotalPay.objects.all().order_by('-date')
-
-
+def TopPage(request):
+    
+    return render(request,'scrape_ps/index.html')
 # class DateListView(ListView):
 #     model = Data
 #     template_name = 'scrape_ps/date_list.html'
